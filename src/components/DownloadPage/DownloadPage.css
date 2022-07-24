@@ -2,13 +2,33 @@
   width: 55vw;
   margin: auto;
   display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
 }
 .main {
   width: 95%;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: rgb(255, 243, 234);
+  flex: 10;
+}
+.Name {
+  font-size: 28px;
+  font-weight: bold;
+}
+.btn {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: baseline;
+}
+.btn > button {
+  padding: 10px 20px;
+  background-color: rgb(217, 162, 117);
+  font-weight: 400;
+  border: none;
+  border-radius: 10px;
 }
 .header {
   background-color: rgb(217, 162, 117);
@@ -19,16 +39,37 @@
   background-color: rgb(44, 44, 44);
   color: white;
   padding: 10px;
+  height: 100px;
 }
 .body {
-  padding: 10px;
-  background-color: rgb(255, 243, 234);
+  padding: 20px;
+  display: flex;
+  gap: 30px;
+}
+.left,
+.right {
+  flex: 5;
+}
+.date {
+  font-size: 12px;
+  color: gray;
 }
 .institute {
   font-size: 18px;
   font-weight: 500;
 }
-.contentPage {
-  background-color: rgb(255, 243, 234);
-  height: 96vh;
+@media only screen and (max-width: 786px) {
+  .wholepage {
+    width: 96vw;
+    margin: auto;
+  }
+  .main {
+    width: 100%;
+  }
+  .Name {
+    font-size: 22px;
+  }
+  .contacts {
+    font-size: small;
+  }
 }

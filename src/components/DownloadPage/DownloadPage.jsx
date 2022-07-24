@@ -5,7 +5,10 @@ import "./DownloadPage.css";
 const DownloadPage = () => {
   const { image } = useContext(ResumeContext);
   const { form } = useContext(ResumeContext);
+  const [hobies, setHobies] = useState();
   const [img, setImg] = useState(null);
+  const [tech_skills, setTech_skills] = useState();
+  const [soft_skills, setSoft_skills] = useState();
   const contentRef = useRef();
   useEffect(() => {
     const selected = image;
@@ -16,6 +19,15 @@ const DownloadPage = () => {
         setImg(reader.result);
       };
       reader.readAsDataURL(selected);
+    }
+    if (form) {
+      setHobies(form.hobies.split(","));
+    }
+    if (form.tech_skills) {
+      setTech_skills(form.tech_skills.split(","));
+    }
+    if (form.soft_skills) {
+      setSoft_skills(form.soft_skills.split(","));
     }
   }, [image, form]);
   const handlePrint = useReactToPrint({
@@ -50,11 +62,8 @@ const DownloadPage = () => {
                       flexDirection: "column",
                       justifyContent: "center",
                     }}
-                    className="Name"
                   >
-                    <div style={{ fontSize: "28px", fontWeight: "bold" }}>
-                      {form.name}
-                    </div>
+                    <div className="Name">{form.name}</div>
                     <div>{form.headline}</div>
                   </div>
                 )}
@@ -72,32 +81,72 @@ const DownloadPage = () => {
                 <div>{form.about}</div>
               </div>
               <div className="body">
-                <h2>Matriculation</h2>
-                <div className="institute">{form.school}</div>
-                <div>end : {form.school_passout}</div>
-                <h2>Intermediate</h2>
-                <div className="institute">{form.intermediate}</div>
-                <div>end : {form.intermediate_passout}</div>
-                <h2>Higher Education</h2>
-                <div className="institute">{form.college}</div>
-                <div>end : {form.college_passout}</div>
-              </div>
-              <div className="body">
-                <h2>Matriculation</h2>
-                <div className="institute">{form.school}</div>
-                <div>end : {form.school_passout}</div>
-                <h2>Intermediate</h2>
-                <div className="institute">{form.intermediate}</div>
-                <div>end : {form.intermediate_passout}</div>
-                <h2>Higher Education</h2>
-                <div className="institute">{form.college}</div>
-                <div>end : {form.college_passout}</div>
+                <div className="left">
+                  <div className="left-top">
+                    <h1>Education</h1>
+                    <h2>Matriculation</h2>
+                    <div className="institute">{form.school}</div>
+                    <div className="date">end : {form.school_passout}</div>
+                    <h2>Intermediate</h2>
+                    <div className="institute">{form.intermediate}</div>
+                    <div className="date">
+                      end : {form.intermediate_passout}
+                    </div>
+                    <h2>Higher Education</h2>
+                    <div className="institute">{form.college}</div>
+                    <div className="date">end : {form.college_passout}</div>
+                  </div>
+                  <div className="left-bottom">
+                    <h1>Hobies</h1>
+                    <div>
+                      <ul>
+                        {hobies.map((el) => (
+                          <li>{el}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <hr></hr>
+                <div className="right">
+                  <div className="right-top">
+                    {form.company && (
+                      <div>
+                        <h1>Experience</h1>
+                        <h2>Company</h2>
+                        <div className="institute">{form.company}</div>
+                        <div className="date">Start : {form.company_join}</div>
+                        <div className="date">End : {form.company_leave}</div>
+                        <div>{form.designation}</div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="right-bottom">
+                    {tech_skills && soft_skills && (
+                      <div>
+                        <h1>Skills</h1>
+                        <h2>Tech Skills</h2>
+                        <ul>
+                          {tech_skills.map((el) => (
+                            <li>{el}</li>
+                          ))}
+                        </ul>
+                        <h2>Soft Skills</h2>
+                        <ul>
+                          {soft_skills.map((el) => (
+                            <li>{el}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         )}
       </div>
-      <div>
+      <div className="btn">
         <button onClick={handlePrint}>Download</button>
       </div>
     </div>
