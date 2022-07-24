@@ -162,7 +162,7 @@ const CustomerPage = () => {
         <div>
           <h1>Education Details</h1>
           <div>
-            <p>Matriculation</p>
+            <h3>Matriculation</h3>
             <div className="single-line">
               <div>School:</div>
               <input
@@ -186,7 +186,7 @@ const CustomerPage = () => {
             </div>
           </div>
           <div>
-            <p>Intermediate</p>
+            <h3>Intermediate</h3>
             <div className="single-line">
               <div>College:</div>
               <input
@@ -210,7 +210,7 @@ const CustomerPage = () => {
             </div>
           </div>
           <div>
-            <p>Higher Education</p>
+            <h3>Higher Education</h3>
             <div className="single-line">
               <div>College:</div>
               <input
@@ -315,7 +315,7 @@ const CustomerPage = () => {
             </div>
           </div>
         </div>
-        <input type="submit" />
+        <input className="submit-btn" type="submit" />
       </form>
     </div>
   );
