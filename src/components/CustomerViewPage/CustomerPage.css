@@ -38,10 +38,8 @@ body {
   padding: 20px;
 }
 @media only screen and (max-width: 786px) {
-  body {
-    padding: 10px;
-  }
   .container {
-    width: 95%;
+    width: 96%;
+    margin: auto;
   }
 }
